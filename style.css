@@ -1,5 +1,20 @@
 @import url("https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@400;500;600&display=swap");
+
 :root {
+ /*development colors  with   devjohnson mwangi*/
+  --dk-bg-main: #ecf2f7;
+  --dk-text-darkest: #121212;
+  --dk-bg-dark-blue: #19212e;
+  --dk-border-light: #e7eaee;
+  --dk-text-medium-gray: #cfcfcf;
+  --dk-text-dark-gray: #676d7e;
+  --dk-bg-medium-gray: #48556a;
+  --dk-accent-light-purple: #eee5ff;
+  --dk-accent-medium-purple: #c4a2f6;
+  --dk-accent-strong-purple: #7541c8;
+  --dk-text-lightest: #ffffff;
+
+ 
   --bgcolor: #ecf2f7;
   --black100: #121212;
   --darkblue: #19212e;
@@ -21,129 +36,156 @@
 }
 
 html {
-  font-family: "Barlow Semi Condensed";
-  font-size: 62.5%;
+  font-family: "Barlow Semi Condensed", sans-serif; /* Added sans-serif fallback */
+  font-size: 62.5%; /* 10px base for rem units */
 }
 
 body {
-  background-color: var(--bgcolor);
-  color: var(--white100);
-  font-size: 1.3rem;
+  background-color: var(--dk-bg-main);
+  color: var(--dk-text-lightest); /* Default text color, overridden by cards */
+  font-size: 1.3rem; /* Default body font size */
+  display: flex; /* For centering content and footer */
+  flex-direction: column; /* For centering content and footer */
+  align-items: center; /* For centering content and footer */
+  min-height: 100vh; /* Ensure footer can be at bottom */
 }
 
-.cards {
+.dk-testimonials-container {
   display: grid;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  /* flex-direction: column; /* Not needed for grid */
+  /* justify-content: center; /* Grid handles this with auto columns or margin auto */
+  /* align-items: center; /* Grid handles item alignment */
   width: 100%;
-  height: auto;
+  /* height: auto; /* Default for block/grid */
   padding: 20px;
-  gap: 15px;
+  gap: 24px; /* Increased gap slightly */
   grid-auto-columns: 1fr;
-  max-width: 1200px;
+  max-width: 1110px; /* Common max-width for content */
+  margin: 40px auto; /* Centering the grid container */
   grid-template-areas:
-    "one"
-    "two"
-    "three"
-    "four"
-    "five";
+    "area-daniel"
+    "area-jonathan"
+    "area-jeanette"
+    "area-patrick"
+    "area-kira";
 }
 
-.card {
-  width: 100%;
-  padding: 40px;
-  border-radius: 5px;
-  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3);
+.dk-testimonial-card {
+  width: 100%; /* Takes full width of its grid cell */
+  padding: 32px; /* Adjusted padding */
+  border-radius: 8px; /* Slightly larger radius */
+  box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.15); /* Softer shadow */
+  display: flex; /* To allow vertical stretching if needed in grid items */
+  flex-direction: column; /* Content flows top to bottom */
 }
 
-.card-header {
+.dk-card-author-section {
   display: flex;
   align-items: center;
-  gap: 25px;
-  margin-bottom: 8px;
+  gap: 20px; /* Consistent gap */
+  margin-bottom: 18px; /* Space before content */
 }
 
-.card-user-photo {
+.dk-author-photo {
   border-radius: 50%;
-  width: 40px;
-  height: 40px;
-  border: 2px solid rgba(255, 255, 255, 0.5);
+  width: 32px; /* Slightly smaller photo */
+  height: 32px;
+  border: 2px solid rgba(255, 255, 255, 0.5); /* Default for light text cards */
 }
 
-.card-username {
-  font-size: 1.6rem;
+.dk-author-name {
+  font-size: 1.5rem; /* Adjusted size */
   font-weight: 600;
-  margin-bottom: 5px;
+  margin-bottom: 2px; /* Fine-tuned spacing */
 }
 
-.card-user-status {
-  font-size: 1.4rem;
+.dk-author-status {
+  font-size: 1.2rem; /* Adjusted size */
   font-weight: 500;
-  opacity: 0.6;
+  opacity: 0.5; /* Original opacity was 0.6 */
 }
 
-.card-title {
+.dk-testimonial-highlight {
   font-size: 2rem;
   font-weight: 600;
-  letter-spacing: 0.3px;
-  margin-bottom: 20px;
+  letter-spacing: 0.01em; /* Slight letter spacing */
+  margin-bottom: 18px; /* Space before full text */
+  line-height: 1.3; /* Added line-height */
 }
 
-.card-description {
+.dk-testimonial-text {
   font-size: 1.3rem;
   font-weight: 500;
-  line-height: 2rem;
-  letter-spacing: 0.3px;
-  opacity: 0.9;
+  line-height: 1.5; /* Increased line-height for readability */
+  letter-spacing: 0.01em;
+  opacity: 0.7; /* Original opacity was 0.9 */
 }
 
-.one {
-  background-color: var(--purple500);
-  position: relative;
-  grid-area: one;
+/* Specific card styles */
+.dk-testimonial-daniel {
+  background-color: var(--dk-accent-strong-purple);
+  color: var(--dk-text-lightest);
+  grid-area: area-daniel;
+  position: relative; /* For pseudo-elements like the quote mark */
+  background-image: url("./images/bg-pattern-quotation.svg"); /* Corrected path assumption */
+  background-repeat: no-repeat;
+  background-position: top 10px right 24px; /* Adjusted position */
+  background-size: 104px; /* Control size */
 }
 
-.two {
-  background-color: var(--gray500);
-  grid-area: two;
+.dk-testimonial-jonathan {
+  background-color: var(--dk-bg-medium-gray);
+  color: var(--dk-text-lightest);
+  grid-area: area-jonathan;
 }
 
-.three {
-  grid-area: three;
+.dk-testimonial-jeanette {
+  background-color: var(--dk-text-lightest);
+  color: var(--dk-text-dark-gray); /* Text color for light bg */
+  grid-area: area-jeanette;
+}
+/* Jeanette and Kira share text color on light bg, so target their avatar border */
+.dk-testimonial-jeanette .dk-author-photo,
+.dk-testimonial-kira .dk-author-photo {
+  border-color: var(--dk-accent-medium-purple); /* Example different border for light cards */
 }
 
-.three,
-.five {
-  background-color: var(--white100);
-  color: var(--gray400);
+
+.dk-testimonial-patrick {
+  background-color: var(--dk-bg-dark-blue);
+  color: var(--dk-text-lightest);
+  grid-area: area-patrick;
+}
+/* Patrick has dark background, ensure avatar border is visible */
+.dk-testimonial-patrick .dk-author-photo {
+  border-color: var(--dk-accent-strong-purple);
 }
 
-.four {
-  background-color: var(--darkblue);
-  grid-area: four;
+
+.dk-testimonial-kira {
+  background-color: var(--dk-text-lightest);
+  color: var(--dk-text-dark-gray); /* Text color for light bg */
+  grid-area: area-kira;
 }
 
-.five {
-  grid-area: five;
-}
 
 footer {
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 2rem;
-  margin-bottom: 1rem;
+  margin-top: 3rem; /* Increased margin */
+  margin-bottom: 2rem;
+  padding: 0 20px; /* Ensure padding on small screens */
 }
 
-.attribution {
+.dk-page-attribution {
   background: rgba(255, 255, 255, 0.7);
   box-shadow: 0 4px 24px rgba(31, 38, 135, 0.08);
-  border-radius: 16px;
-  padding: 1.2rem 2.5rem;
-  color: var(--darkblue);
-  font-size: 1.6rem;
+  border-radius: 12px; /* Adjusted radius */
+  padding: 1rem 2rem; /* Adjusted padding */
+  color: var(--dk-bg-dark-blue);
+  font-size: 1.4rem; /* Adjusted font size */
   text-align: center;
   backdrop-filter: blur(8px) saturate(180%);
   -webkit-backdrop-filter: blur(8px) saturate(180%);
@@ -151,51 +193,66 @@ footer {
   transition: box-shadow 0.3s;
 }
 
-.attribution a {
-  color: var(--purple500);
+.dk-page-attribution a {
+  color: var(--dk-accent-strong-purple);
   font-weight: 600;
   text-decoration: none;
   transition: color 0.2s;
 }
 
-.attribution a:hover,
-.attribution a:focus {
-  color: var(--darkblue);
+.dk-page-attribution a:hover,
+.dk-page-attribution a:focus {
+  color: var(--dk-bg-dark-blue);
   text-decoration: underline;
 }
 
-@media (min-width: 600px) {
-  .cards {
-    margin: 20px auto;
+/* --- Media Queries --- */
+
+@media (min-width: 768px) { /* Tablet breakpoint */
+  .dk-testimonials-container {
+    /* margin: 20px auto; /* Redundant due to body centering and main margin */
     grid-template-columns: repeat(2, 1fr);
     grid-template-areas:
-      "one two"
-      "one two"
-      "three four"
-      "five five";
+      "area-daniel   area-daniel"  /* Daniel spans 2 columns */
+      "area-jeanette area-jonathan" /* Jeanette, Jonathan */
+      "area-patrick  area-kira"    /* Patrick, Kira */
+      "area-patrick  area-kira";   /* Patrick, Kira (if Kira needs more height, Patrick will match) */
+      /* Adjusted layout: Daniel top, then pairs, Kira might be tricky for 5 items on 2 cols */
+      /* Let's try a more common 2-col layout for 5 items */
+    grid-template-areas:
+      "area-daniel   area-jonathan"
+      "area-jeanette area-patrick"
+      "area-kira     area-kira"; /* Kira spans two columns at the bottom */
   }
 
-  .card {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-  } 
-
-  .one {
-    background-color: var(--purple500);
-    position: relative;
-    background-image: url("../images/bg-pattern-quotation.svg");
-    background-repeat: no-repeat;
-    background-position: top right 13%;
+  .dk-testimonial-daniel {
+    background-position: top 10px right 10%; /* Adjust quote for wider card */
+  }
+   .dk-testimonial-kira {
+    /* This rule ensures Kira can span if needed, but grid-area does the job */
   }
 }
 
-@media (min-width: 1024px) {
-  .cards {
-    margin: 40px auto;
-    grid-template-columns: repeat(3, 1fr);
+@media (min-width: 1024px) { /* Desktop breakpoint */
+  .dk-testimonials-container {
+    /* margin: 40px auto; /* Redundant */
+    grid-template-columns: repeat(4, 1fr); /* Switched to 4 columns */
+    grid-template-rows: auto auto; /* Define rows for better control */
+    gap: 30px; /* Slightly more gap on larger screens */
+    max-width: 1110px; /* From the design spec */
     grid-template-areas:
-      "one one two five"
-      "three four four five";
+      "area-daniel   area-daniel   area-jonathan area-kira"
+      "area-jeanette area-patrick  area-patrick  area-kira";
+  }
+
+  /* Ensure Kira spans two rows in the last column */
+  .dk-testimonial-kira {
+    grid-row: span 2; /* Make Kira span 2 rows */
+  }
+   .dk-testimonial-daniel {
+    /* col-span 2 is implicit by grid-template-areas */
+  }
+  .dk-testimonial-patrick {
+    /* col-span 2 is implicit by grid-template-areas */
   }
 }
